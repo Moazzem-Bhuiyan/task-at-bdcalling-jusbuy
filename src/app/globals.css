@@ -4,13 +4,13 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #030303;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #050404;
   }
 }
 
@@ -18,4 +18,35 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+li{
+  list-style: none;
+}
+
+@import '~@splidejs/splide/dist/css/splide.min.css';
+
+.splide__arrows {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px; /* Adjust as needed */
+}
+
+.splide__arrow {
+  background-color: #fff; /* Button background color */
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+/* add to cart button */
+
+.cart-button {
+  display: none; 
+}
+
+.image-container:hover .cart-button {
+  display: block; 
 }
