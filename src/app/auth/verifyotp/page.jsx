@@ -51,7 +51,7 @@ const Page = () => {
                 <div className=" space-y-5">
 
                     <h1 className="text-xl">verify OTP </h1>
-                    <p>We'll send a verification code to your email. Check your inbox and enter the code here.</p>
+                    <p>We ll send a verification code to your email. Check your inbox and enter the code here.</p>
 
  <form onSubmit={handleSubmit} className=" md:p-8 max-w-md w-full space-y-5">
         

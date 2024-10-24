@@ -63,7 +63,7 @@ const SignIn = () => {
               </div>
 
               <h1 className="text-center text- font-semibold ">
-                Don't Have An Account ?{" "}
+                Don &apos t Have An Account ?{" "}
                <Link href='/auth/signup'> <span className="text-primary cursor-pointer ">Register</span></Link>
               </h1>
 

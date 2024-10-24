@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -38,7 +39,9 @@ const Checkout = () => {
             <tbody className="">
               <tr className="border-t">
                 <td className="py-4 px-4 flex items-center space-x-4 border-r border-primary">
-                  <img
+                  <Image
+                  width={100}
+                  height={100}
                     src=" https://i.ibb.co/KFYWDgW/Frame-604-3.png"
                     alt="LCD Monitor"
                     className="w-16 h-16"
@@ -50,7 +53,9 @@ const Checkout = () => {
               </tr>
               <tr className="border-t">
                 <td className="py-4 px-4 flex items-center space-x-4 border-r border-primary ">
-                  <img
+                  <Image
+                  width={100}
+                  height={100}
                     src="https://i.ibb.co/KFYWDgW/Frame-604-3.png"
                     alt="LCD Monitor"
                     className="w-16 h-16"
@@ -126,7 +131,9 @@ const Checkout = () => {
               <li className="flex justify-between">
                 <span>
                   {" "}
-                  <img
+                  <Image
+                  width={100}
+                  height={100}
                     src="https://i.ibb.co/KFYWDgW/Frame-604-3.png"
                     alt="LCD Monitor"
                     className="w-16 h-16"
@@ -138,7 +145,9 @@ const Checkout = () => {
               <li className="flex justify-between">
                 <span>
                   {" "}
-                  <img
+                  <Image
+                  width={100}
+                  height={100}
                     src="https://i.ibb.co/KFYWDgW/Frame-604-3.png"
                     alt="LCD Monitor"
                     className="w-16 h-16"

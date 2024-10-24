@@ -1,4 +1,5 @@
-import { review } from "@/api/review";import { useEffect, useState } from "react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import StarRatings from "react-star-ratings";
 
 const Review = () => {
@@ -25,7 +26,8 @@ const Review = () => {
           allreview.map((item, index) => (
             <div className="my-5 space-y-5" key={index}>
               <div className="flex gap-5">
-                <img className="w-10 rounded-full" src={item.img} alt="" />
+                
+                <Image width={100} height={100} className="w-10 rounded-full" src={item.img} alt="ss" />
                 <h1 className="font-bold">{item.name}</h1>
                 <p className="text-primary">Just Now</p>
               </div>
@@ -45,7 +47,7 @@ const Review = () => {
             </div>
           ))
         ) : (
-          <p>No reviews available</p> // Fallback if there are no reviews
+          <p>No reviews available</p> 
         )}
       </div>
     </div>

@@ -4,34 +4,26 @@ import { newarrivall } from "@/api/newarrival";
 import Reelated from "@/app/Components/Related/Reelated";
 import Review from "@/app/Components/review/Review";
 import SectionTitle from "@/app/Components/shared/SectionTitle";
-import React, { useState } from "react";
+import Image from "next/image";
+import { useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
+import { useParams } from "next/navigation"; // Import useParams from next/navigation
 
-const Page = ({ params }) => {
+const Page = () => {
   const sizes = ["XS", "M", "L", "XL", "XXL"];
+  
+  // Use useParams to unwrap params
+  const { id } = useParams(); 
 
-  const id = React.use(params).id;
-
-  const productDetails = newarrivall.find((item) => item.id === Number(id));
-
-  if (!productDetails) {
-    return <h1 className="text-center text-2xl">Product not found</h1>;
-  }
-
-  const {
-    title,
-    description,
-    img,
-    price,
-    category,
-    img_gallery = [],
-    product_description,
-  } = productDetails;
-
+  // Initialize state for selected size and quantity
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(0);
 
+  // Fetch product details using the product ID
+  const productDetails = newarrivall.find((item) => item.id === Number(id));
+
+  // Define handlers for size selection and quantity adjustment
   const handleSizeClick = (size) => {
     setSelectedSize(size);
   };
@@ -46,23 +38,47 @@ const Page = ({ params }) => {
     }
   };
 
+  // Display an error message if the product is not found
+  if (!productDetails) {
+    return <h1 className="text-center text-2xl">Product not found</h1>;
+  }
+
+  // Destructure product details
+  const {
+    title,
+    description,
+    img,
+    price,
+    category,
+    img_gallery = [],
+    product_description,
+  } = productDetails;
+
   return (
     <div>
       <div className="grid md:grid-cols-3 gap-10 md:p-10 p-5">
         <div className="col-span-2">
           <div className="grid md:grid-cols-2">
-            <div className=" flex md:flex-col ">
+            <div className="flex md:flex-col">
               {img_gallery.map((nestedImg, index) => (
-                <img
+                <Image
                   key={index}
                   src={nestedImg}
                   alt={`img-${index}`}
+                  width={100}
+                  height={100}
                   className="w-24 m-auto border my-2 p-2 bg-gray-300"
                 />
               ))}
             </div>
             <div className="flex justify-center items-center bg-gray-300 p-10">
-              <img className="md:w-[99%] m-auto" src={img} alt={title} />
+              <Image 
+                src={img} 
+                alt={title} 
+                width={100} 
+                height={100} 
+                className="md:w-[99%] m-auto" 
+              />
             </div>
           </div>
         </div>
@@ -93,7 +109,7 @@ const Page = ({ params }) => {
             </div>
           </h1>
 
-          <div className="flex  justify-around">
+          <div className="flex justify-around">
             <div className="flex justify-start items-center gap-2 md:gap-5 border md:w-[117px] rounded-sm">
               <button
                 className="border px-3 py-1 rounded-sm hover:bg-primary hover:text-white"
@@ -123,40 +139,25 @@ const Page = ({ params }) => {
         </div>
       </div>
 
-      <button className="bg-primary text-white px-8 py-1 rounded-md my-5 ml-2 md:ml-2 ">
+      <button className="bg-primary text-white px-8 py-1 rounded-md my-5 ml-2 md:ml-2">
         Description
       </button>
 
-      <h1 className=" p-2 text-center">
-        {product_description} Lorem ipsum, dolor sit amet consectetur
-        adipisicing elit. Aperiam fugiat sint nesciunt unde mollitia, facilis
-        quae! Totam ex nobis ipsum, ad dolorem obcaecati, nemo assumenda
-        deleniti accusamus sapiente quod ducimus molestias exercitationem
-        tempora voluptas ea tempore ipsa, laboriosam modi debitis alias culpa?
-        Eaque aspernatur rerum ab, reiciendis ullam, perspiciatis distinctio
-        dolor quas expedita exercitationem natus tempore, nam suscipit eveniet
-        voluptates cum rem. Repudiandae, earum aliquam dolores quia doloribus
-        maxime esse accusamus nesciunt quidem modi eos numquam fugiat illo
-        eveniet at nemo dolorem tempora. Repellat laborum sequi alias, odio
-        neque ullam enim est. Vel exercitationem impedit ut veritatis doloribus
-        odit dolorem.
+      <h1 className="p-2 text-center">
+        {product_description || "No description available."}
       </h1>
       <div className="border-b border-primary">
-        {" "}
-        <button className="bg-primary text-white px-8 py-1 rounded-md my-5 ">
+        <button className="bg-primary text-white px-8 py-1 rounded-md my-5">
           Rating & Reviews
         </button>
       </div>
 
       {/* REVIEW SECTION */}
+      <Review />
 
-      <Review></Review>
-
-      {/* related product */}
-
-      <SectionTitle subtitle={"Related Item"}></SectionTitle>
-
-      <Reelated></Reelated>
+      {/* Related product section */}
+      <SectionTitle subtitle={"Related Item"} />
+      <Reelated />
     </div>
   );
 };

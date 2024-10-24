@@ -7,7 +7,7 @@ import WishButton from "../Components/shared/WishButton";
 import Image from "next/image";
 import Link from "next/link";
 
-const page = () => {
+const Page = () => {
 
   const [newarrival] = UseNewArrival();
 
@@ -357,4 +357,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

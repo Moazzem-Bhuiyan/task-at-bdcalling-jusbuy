@@ -1,24 +1,24 @@
 "use client";
 
+import { use, useState } from "react";
 import { product } from "@/api/products";
 import Reelated from "@/app/Components/Related/Reelated";
 import Review from "@/app/Components/review/Review";
 import SectionTitle from "@/app/Components/shared/SectionTitle";
-import React, { useState } from "react";
+import Image from "next/image";
 import { CiHeart } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
 
 const Page = ({ params }) => {
   const sizes = ["XS", "M", "L", "XL", "XXL"];
 
-  const id = React.use(params).id;
+  // Correctly unwrap the `params` as it's now a Promise
+  const { id } = use(params);  // Make sure to unwrap the promise using `use()`
 
+  // Find the product details using the `id`
   const productDetails = product.find((item) => item.id === Number(id));
 
-  if (!productDetails) {
-    return <h1 className="text-center text-2xl">Product not found</h1>;
-  }
-
+  // Destructure the product details safely
   const {
     title,
     description,
@@ -27,8 +27,9 @@ const Page = ({ params }) => {
     category,
     img_gallery = [],
     product_description,
-  } = productDetails;
+  } = productDetails || {};
 
+  // State hooks declared here
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(0);
 
@@ -46,6 +47,11 @@ const Page = ({ params }) => {
     }
   };
 
+  // Render message if product is not found
+  if (!productDetails) {
+    return <h1 className="text-center text-2xl">Product not found</h1>;
+  }
+
   return (
     <div>
       <div className="grid md:grid-cols-3 gap-10 md:p-10 p-2">
@@ -53,7 +59,9 @@ const Page = ({ params }) => {
           <div className="grid md:grid-cols-2">
             <div className="flex md:flex-col">
               {img_gallery.map((nestedImg, index) => (
-                <img
+                <Image
+                  width={100}
+                  height={100}
                   key={index}
                   src={nestedImg}
                   alt={`img-${index}`}
@@ -62,7 +70,13 @@ const Page = ({ params }) => {
               ))}
             </div>
             <div className="flex justify-center items-center bg-gray-300 p-10">
-              <img className="md:w-[99%] m-auto" src={img} alt={title} />
+              <Image
+                width={100}
+                height={100}
+                className="md:w-[99%] m-auto"
+                src={img}
+                alt={title}
+              />
             </div>
           </div>
         </div>
@@ -123,42 +137,26 @@ const Page = ({ params }) => {
         </div>
       </div>
 
-      {/* details end */}
-
+      {/* Details end */}
       <button className="bg-primary text-white px-8 py-1 rounded-md my-5 ml-5 md:ml-0 ">
         Description
       </button>
 
       <h1 className="md:p-0 p-5 text-center">
-        {product_description} Lorem ipsum, dolor sit amet consectetur
-        adipisicing elit. Aperiam fugiat sint nesciunt unde mollitia, facilis
-        quae! Totam ex nobis ipsum, ad dolorem obcaecati, nemo assumenda
-        deleniti accusamus sapiente quod ducimus molestias exercitationem
-        tempora voluptas ea tempore ipsa, laboriosam modi debitis alias culpa?
-        Eaque aspernatur rerum ab, reiciendis ullam, perspiciatis distinctio
-        dolor quas expedita exercitationem natus tempore, nam suscipit eveniet
-        voluptates cum rem. Repudiandae, earum aliquam dolores quia doloribus
-        maxime esse accusamus nesciunt quidem modi eos numquam fugiat illo
-        eveniet at nemo dolorem tempora. Repellat laborum sequi alias, odio
-        neque ullam enim est. Vel exercitationem impedit ut veritatis doloribus
-        odit dolorem.
+        {product_description || "No description available."}
       </h1>
       <div className="border-b border-primary">
-        {" "}
         <button className="bg-primary text-white px-8 py-1 rounded-md my-5 ml-5 md:ml-0">
           Rating & Reviews
         </button>
       </div>
 
       {/* REVIEW SECTION */}
+      <Review />
 
-      <Review></Review>
-
-      {/* related product */}
-
-      <SectionTitle subtitle={"Related Item"}></SectionTitle>
-
-      <Reelated></Reelated>
+      {/* Related product */}
+      <SectionTitle subtitle={"Related Item"} />
+      <Reelated />
     </div>
   );
 };

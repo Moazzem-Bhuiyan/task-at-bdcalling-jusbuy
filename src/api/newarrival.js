@@ -40,7 +40,8 @@ export const newarrivall = [
     {
         "id": 3,
         "title": "Modern Bookshelf",
-        "description": "Styl",
+        "description": "Styldddddddddddddddddddddddddddddddddddweferrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+        "img": "https://i.ibb.co/t3JxW7C/Frame-610.png",
         "rating": 4.7,
         "category": "Furniture",
         "price": 129.99,
@@ -49,10 +50,10 @@ export const newarrivall = [
         "size": "N/A",
         "product_description": "This modern bookshelf adds a touch of elegance to your space while providing ample storage for books and decor.",
         "img_gallery": [
-            "",
-            "",
-            "",
-            ""
+            "https://i.ibb.co/t3JxW7C/Frame-610.png",
+            "https://i.ibb.co/t3JxW7C/Frame-610.png",
+            "https://i.ibb.co/t3JxW7C/Frame-610.png",
+            "https://i.ibb.co/t3JxW7C/Frame-610.png"
         ]
     },
     {

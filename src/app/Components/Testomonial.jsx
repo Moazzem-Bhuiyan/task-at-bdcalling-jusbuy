@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import SectionTitle from "./shared/SectionTitle";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import Image from "next/image";
 
 
 
@@ -79,7 +80,8 @@ const Testomonial = () => {
               <div className="category-item mx-2 bg-white border rounded-lg p-10 space-y-2">
                 {" "}
                 <div className="  flex justify-center  rounded-md">
-                  <img className=" w-16 rounded-full" src={category.img} alt="" />
+                  <Image width={100}
+                  height={100} className=" w-16 rounded-full" src={category.img} alt="" />
 
 
                 </div>
