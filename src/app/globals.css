@@ -30,11 +30,11 @@ li{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 10px; /* Adjust as needed */
+  right: 10px; 
 }
 
 .splide__arrow {
-  background-color: #fff; /* Button background color */
+  background-color: #fff;
   border: none;
   padding: 10px;
   cursor: pointer;

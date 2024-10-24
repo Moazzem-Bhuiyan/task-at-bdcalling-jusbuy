@@ -3,8 +3,8 @@ import React, { useEffect, useState, useRef } from "react";
 import SectionTitle from "../shared/SectionTitle";
 import Image from "next/image";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import { FaArrowRightLong } from "react-icons/fa6";
-import { FaArrowLeftLong } from "react-icons/fa6";
+
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
 
 const Categoryes = () => {
   const [categories, setCategories] = useState([]);
@@ -31,13 +31,13 @@ const Categoryes = () => {
             className="  rounded-full hover:bg-primary p-2 hover:text-white text-2xl "
             onClick={() => splideRef.current?.go("-1")}
           >
-            <FaArrowLeftLong />
+           <IoIosArrowRoundBack />
           </button>
           <button
             className="  rounded-full hover:bg-primary p-2 hover:text-white text-2xl "
             onClick={() => splideRef.current?.go("+1")}
           >
-            <FaArrowRightLong />
+           <IoIosArrowRoundForward />
           </button>
         </div>
         

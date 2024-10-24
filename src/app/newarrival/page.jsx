@@ -6,6 +6,7 @@ import SectionTitle from "../Components/shared/SectionTitle";
 import WishButton from "../Components/shared/WishButton";
 import Image from "next/image";
 import Link from "next/link";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Page = () => {
 
@@ -69,12 +70,33 @@ const Page = () => {
     <div>
       <section className="flex justify-between  ">
         <SectionTitle subtitle={"This Month"} title={"NewArrival"} />
-        <div className="mt-40 hidden md:block">
-          <input
-            type="search"
-            placeholder="What Are You Looking for? "
-            className="bg-white p-2 border outline-none"
-          />
+        <div>
+
+          
+
+
+          <div className="hidden md:block mt-40">
+            <label className="input input-bordered bg-neutral-200 border-none rounded-sm flex items-center gap-2 h-9">
+              <input
+                type="text"
+                className="grow text-sm"
+                placeholder="What are you looking for?"
+              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                className="h-4 w-4 opacity-100 "
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </label>
+          </div>
+
         </div>
       </section>
 
@@ -90,7 +112,7 @@ const Page = () => {
           </h1>
           <div className="flex justify-between py-5">
             <h3 className="text-[#fe6201]  font-semibold">Category</h3>
-            <h1>⬇️</h1>
+            <h1><IoIosArrowDown /></h1>
           </div>
           <div>
             <div className="flex gap-4 ">
@@ -213,7 +235,7 @@ const Page = () => {
             <div>
               <div className="flex justify-between py-6">
                 <h3 className="text-[#fe6201]  font-semibold">Price</h3>
-                <h1>⬇️</h1>
+                <h1><IoIosArrowDown /></h1>
               </div>
               <div className="flex ">
                 <div className="form-control">
