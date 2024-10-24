@@ -5,7 +5,7 @@ const SectionTitle = ({ subtitle, title }) => {
 
     return (
 
-        <div className="mt-20 p-5">
+        <div className="md:mt-20 p-5">
     
         <p
           className="text-primary   border-l-[17px] border-primary rounded-sm p-1 inline-block"

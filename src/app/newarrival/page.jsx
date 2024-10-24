@@ -5,10 +5,37 @@ import UseNewArrival from "../Components/Hooks/UseNewArrival";
 import SectionTitle from "../Components/shared/SectionTitle";
 import WishButton from "../Components/shared/WishButton";
 import Image from "next/image";
+import Link from "next/link";
 
 const page = () => {
 
   const [newarrival] = UseNewArrival();
+
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (item) => {
+    
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+    
+    const existingItemIndex = cartItems.findIndex(cartItem => cartItem.id === item.id);
+
+    if (existingItemIndex !== -1) {
+      
+      cartItems[existingItemIndex].quantity += 1;
+    } else {
+     
+      cartItems.push({ ...item, quantity: 1 });
+    }
+
+
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+
+    
+    setCart(cartItems);
+
+    alert("Item added to cart!");
+  };
 
   
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,9 +67,9 @@ const page = () => {
 
   return (
     <div>
-      <section className="flex justify-between">
+      <section className="flex justify-between  ">
         <SectionTitle subtitle={"This Month"} title={"NewArrival"} />
-        <div className="mt-40">
+        <div className="mt-40 hidden md:block">
           <input
             type="search"
             placeholder="What Are You Looking for? "
@@ -51,7 +78,7 @@ const page = () => {
         </div>
       </section>
 
-      <div className="grid grid-cols-6 gap-10">
+      <div className="md:grid md:grid-cols-6 gap-10 p-5">
 
 
         {/* sidebar */}
@@ -243,10 +270,12 @@ const page = () => {
 
         {/* data fetch */}
         <div className="col-span-4">
-          <div className="grid grid-cols-2 gap-10">
+          <div className="grid md:grid-cols-2 gap-10">
             {currentItems.map((item, index) => (
               <div key={index}>
-                <div className="bg-[#DFE1E3] relative rounded-sm flex items-center justify-center w-full h-[250px] image-container">
+               <>
+
+               <div className="bg-[#DFE1E3] relative rounded-sm flex items-center justify-center w-full h-[250px] image-container">
                   <Image
                     className="w-[150px]"
                     height={120}
@@ -257,13 +286,20 @@ const page = () => {
                   <div className="absolute top-3 right-3">
                     <WishButton />
                   </div>
-                  <div className="cart-button absolute bottom-0 transform py-0">
-                    <button className="w-full bg-primary text-white px-[158px] py-2">
-                      Add to Cart
-                    </button>
+                  <div className="cart-button absolute bottom-0 transform py-0 w-full">
+                  <button 
+                    onClick={() => addToCart(item)}  
+                    className=' w-full bg-primary text-white  py-2'>
+                    Add to Cart
+                  </button>
                   </div>
                 </div>
-                <h1 className="pt-2">{item.title}</h1>
+               
+               </>
+
+               <Link  href={`/newArribaldetails/${item.id}`}>
+
+               <h1 className="pt-2">{item.title}</h1>
                 <h1 className="text-lg text-[#fe6201] py-1">${item.price}</h1>
                 <div>
                   <StarRatings
@@ -276,6 +312,9 @@ const page = () => {
                   />
                   <span className="-mt-1 ml-2 text-neutral-500">(55)</span>
                 </div>
+
+               </Link>
+                
               </div>
             ))}
           </div>

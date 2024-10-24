@@ -1,19 +1,22 @@
-"use client";
-import React, { useEffect, useState, useRef } from "react";
-import SectionTitle from "../shared/SectionTitle";
-import Image from "next/image";
+"use client"
+import { useEffect, useRef, useState } from "react";
+import SectionTitle from "./shared/SectionTitle";
+import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import { FaArrowRightLong } from "react-icons/fa6";
-import { FaArrowLeftLong } from "react-icons/fa6";
 
-const Categoryes = () => {
-  const [categories, setCategories] = useState([]);
+
+
+const Testomonial = () => {
+
+   
+
+    const [categories, setCategories] = useState([]);
 
   const splideRef = useRef();
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const res = await fetch("/categories.json");
+      const res = await fetch("/review.json");
       const data = await res.json();
       setCategories(data);
     };
@@ -21,12 +24,15 @@ const Categoryes = () => {
     fetchCategories();
   }, []);
 
-  return (
-    <div className=" md:pb-20">
-      <div className=" flex justify-between">
-        <SectionTitle title={"Browse By Category"} subtitle={"Categories"} />
 
-        <div className="mt-32 p-5">
+    return (
+        <div>
+
+<div className=" flex justify-between py-10">
+       
+       <h1 className=" text-2xl font-semibold">Happy Customers Says</h1>
+
+        <div className="">
           <button
             className="  rounded-full hover:bg-primary p-2 hover:text-white text-2xl "
             onClick={() => splideRef.current?.go("-1")}
@@ -42,12 +48,13 @@ const Categoryes = () => {
         </div>
         
       </div>
-      <div className="relative">
+
+<div className="relative">
         <Splide
           ref={splideRef}
           options={{
             type: "slide",
-            perPage: 5,
+            perPage: 2,
             focus: "center",
             pagination: false,
             arrows: false,
@@ -69,27 +76,25 @@ const Categoryes = () => {
         >
           {categories.map((category, index) => (
             <SplideSlide key={index}>
-              <div className="category-item mx-2">
+              <div className="category-item mx-2 bg-white border rounded-lg p-10 space-y-2">
                 {" "}
-                <div className="bg-gray-200 h-[240px] flex justify-center items-center rounded-md">
-                  <Image
-                    src={category.img}
-                    alt={category.category}
-                    width={150}
-                    height={100}
-                    className="object-contain"
-                  />
+                <div className="  flex justify-center  rounded-md">
+                  <img className=" w-16 rounded-full" src={category.img} alt="" />
+
+
                 </div>
-                <h2 className="text-center text-primary text-lg mt-2">
-                  {category.category}
+                <h1 className=" text-center font-bold">{category.name}</h1>
+                <h2 className="text-center text-sm mt-2">
+                  {category.description}
                 </h2>
               </div>
             </SplideSlide>
           ))}
         </Splide>
       </div>
-    </div>
-  );
+            
+        </div>
+    );
 };
 
-export default Categoryes;
+export default Testomonial;

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Form, Field } from "react-final-form";
 
 const Forget = () => {
@@ -9,7 +10,7 @@ const Forget = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-5 w-[70%] m-auto my-20 bg-gradient-to-br from-orange-100 to-orange-00 py-40 px-10 ">
+    <div className="grid md:grid-cols-2 gap-5 md:w-[70%] m-auto md:my-20 bg-gradient-to-br from-orange-100 to-orange-00 py-40 px-10 ">
       <div className=" flex justify-center items-center">
         <Image
           src="/forgot.png"
@@ -32,7 +33,6 @@ const Forget = () => {
                 account password reset.
               </p>
 
-              {/* Email Field */}
               <div className="mb-4">
                 <label
                   htmlFor="email"
@@ -50,14 +50,13 @@ const Forget = () => {
                 />
               </div>
 
-              {/* Submit Button */}
-              <button
+             <Link href="/auth/verifyotp"> <button
                 type="submit"
                 className=" bg-primary text-white   w-full border-black mt-10 py-2"
                 disabled={submitting}
               >
                 Submit
-              </button>
+              </button></Link>
             </form>
           )}
         />

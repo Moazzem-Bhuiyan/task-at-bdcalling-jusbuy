@@ -9,6 +9,37 @@ import { FaStar } from "react-icons/fa6";
 import Link from "next/link";
 
 const Page = () => {
+
+  // addcart code
+
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (item) => {
+    
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+    
+    const existingItemIndex = cartItems.findIndex(cartItem => cartItem.id === item.id);
+
+    if (existingItemIndex !== -1) {
+      
+      cartItems[existingItemIndex].quantity += 1;
+    } else {
+     
+      cartItems.push({ ...item, quantity: 1 });
+    }
+
+
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+
+    
+    setCart(cartItems);
+
+    alert("Item added to cart!");
+  };
+
+
+
   const [products] = UseProducts();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
@@ -51,12 +82,12 @@ const Page = () => {
         </div>
       </div>
 
-      <h1 className="text-2xl font-bold mb-4">View All Product</h1>
+      <h1 className="text-2xl font-bold mb-4 pl-5 md:pl-0 mt-5 md:mt-0">View All Product</h1>
 
-      <div className="grid grid-cols-4 gap-10 mb-20">
+      <div className="grid md:grid-cols-4 gap-10 md:mb-20 p-5">
         {currentItems.map((item, index) => (
           <div key={index}>
-            <Link href={`/productdetails/${item.id}`}>
+            <>
               <div className="bg-[#DFE1E3] relative rounded-sm flex items-center justify-center w-full h-[250px] image-container">
                 <Image
                   className="w-[150px]"
@@ -68,29 +99,40 @@ const Page = () => {
                 <div className="absolute top-3 right-3">
                   <WishButton />
                 </div>
-                <div className="cart-button absolute bottom-0 transform">
-                  <AddCart />
+                <div className="cart-button absolute bottom-0 transform w-full">
+                <button 
+                    onClick={() => addToCart(item)}  
+                    className=' w-full bg-primary text-white py-2'>
+                    Add to Cart
+                  </button>
                 </div>
               </div>
-            </Link>
+            </>
+
+            <Link href={`/productdetails/${item.id}`}>
 
             <h1 className="pt-2">{item.title}</h1>
 
-            <div className="flex gap-5">
-              <h1 className="text-lg text-[#fe6201] py-1">${item.price}</h1>
-              <div className="mt-1">
-                <StarRatings
-                  rating={item.rating}
-                  starRatedColor="orange"
-                  numberOfStars={5}
-                  name="rating"
-                  starDimension="20px"
-                  starSpacing="3px"
-                  isSelectable={false}
-                />
-                <span className="-mt-1 ml-2 text-neutral-500">(55)</span>
-              </div>
-            </div>
+<div className="flex gap-5">
+  <h1 className="text-lg text-[#fe6201] py-1">${item.price}</h1>
+  <div className="mt-1">
+    <StarRatings
+      rating={item.rating}
+      starRatedColor="orange"
+      numberOfStars={5}
+      name="rating"
+      starDimension="20px"
+      starSpacing="3px"
+      isSelectable={false}
+    />
+    <span className="-mt-1 ml-2 text-neutral-500">(55)</span>
+  </div>
+</div>
+
+
+            </Link>
+
+           
           </div>
         ))}
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { product } from "@/api/products";
+import { newarrivall } from "@/api/newarrival";
 import Reelated from "@/app/Components/Related/Reelated";
 import Review from "@/app/Components/review/Review";
 import SectionTitle from "@/app/Components/shared/SectionTitle";
@@ -13,7 +13,7 @@ const Page = ({ params }) => {
 
   const id = React.use(params).id;
 
-  const productDetails = product.find((item) => item.id === Number(id));
+  const productDetails = newarrivall.find((item) => item.id === Number(id));
 
   if (!productDetails) {
     return <h1 className="text-center text-2xl">Product not found</h1>;
@@ -48,10 +48,10 @@ const Page = ({ params }) => {
 
   return (
     <div>
-      <div className="grid md:grid-cols-3 gap-10 md:p-10 p-2">
+      <div className="grid md:grid-cols-3 gap-10 md:p-10 p-5">
         <div className="col-span-2">
           <div className="grid md:grid-cols-2">
-            <div className="flex md:flex-col">
+            <div className=" flex md:flex-col ">
               {img_gallery.map((nestedImg, index) => (
                 <img
                   key={index}
@@ -93,8 +93,8 @@ const Page = ({ params }) => {
             </div>
           </h1>
 
-          <div className="flex justify-around">
-            <div className="flex justify-start items-center gap-5 border w-[117px] rounded-sm">
+          <div className="flex  justify-around">
+            <div className="flex justify-start items-center gap-2 md:gap-5 border md:w-[117px] rounded-sm">
               <button
                 className="border px-3 py-1 rounded-sm hover:bg-primary hover:text-white"
                 onClick={decrementQuantity}
@@ -123,13 +123,11 @@ const Page = ({ params }) => {
         </div>
       </div>
 
-      {/* details end */}
-
-      <button className="bg-primary text-white px-8 py-1 rounded-md my-5 ml-5 md:ml-0 ">
+      <button className="bg-primary text-white px-8 py-1 rounded-md my-5 ml-2 md:ml-2 ">
         Description
       </button>
 
-      <h1 className="md:p-0 p-5 text-center">
+      <h1 className=" p-2 text-center">
         {product_description} Lorem ipsum, dolor sit amet consectetur
         adipisicing elit. Aperiam fugiat sint nesciunt unde mollitia, facilis
         quae! Totam ex nobis ipsum, ad dolorem obcaecati, nemo assumenda
@@ -145,7 +143,7 @@ const Page = ({ params }) => {
       </h1>
       <div className="border-b border-primary">
         {" "}
-        <button className="bg-primary text-white px-8 py-1 rounded-md my-5 ml-5 md:ml-0">
+        <button className="bg-primary text-white px-8 py-1 rounded-md my-5 ">
           Rating & Reviews
         </button>
       </div>

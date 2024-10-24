@@ -1,12 +1,12 @@
 "use client";
 
-import SectionTitle from "../shared/SectionTitle";
+
 import Image from "next/image";
 import StarRatings from "react-star-ratings";
 import WishButton from "../shared/WishButton";
 import AddCart from "../shared/AddCart";
 import UseNewArrival from "../Hooks/UseNewArrival";
-import Link from "next/link";
+
 
 const Reelated = () => {
     const [newarrival]=UseNewArrival();
@@ -15,7 +15,7 @@ const Reelated = () => {
              <div className="pb-20">
      
 
-      <div className="grid grid-cols-4 gap-10">
+      <div className="grid md:grid-cols-4 gap-10 p-5 md:p-0">
         {newarrival.slice(0, 4).map((item, index) => (
           <div key={index}>
             <div className="bg-[#DFE1E3] relative rounded-sm flex items-center justify-center w-full h-[250px] image-container">

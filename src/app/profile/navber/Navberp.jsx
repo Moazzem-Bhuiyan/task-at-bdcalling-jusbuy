@@ -4,8 +4,9 @@ import { CiMenuBurger, CiUser } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import Image from "next/image";
-import useCart from "../Hooks/UseCarts";
-const Navber = () => {
+import useCart from "@/app/Components/Hooks/UseCarts";
+
+const Navberp = () => {
   const { cartItems } = useCart(); 
 
     const NavLink = [
@@ -22,14 +23,7 @@ const Navber = () => {
             title : "About",
             path:"/about"
           },
-          {
-            title : "Sign Up",
-            path:"auth/signup"
-          },
-          {
-            title : "Sign In",
-            path:"auth/sigin"
-          }
+         
 
 
     ]
@@ -51,7 +45,7 @@ const Navber = () => {
           }
             </ul>
           </div>
-          <Link href={'/'}><Image className="ml-4 md:ml-0" alt="logo" src='/logo.png' height={60} width={100}/></Link>
+          <Link href={'/'}><Image alt="logo" src='/logo.png' height={60} width={100}/></Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-10">
@@ -89,20 +83,20 @@ const Navber = () => {
             </div>
           </div>
 
-          <Link href="/wishlist"><div className="indicator mr-3 mt-2">
-          <i className="text-2xl  "> <CiHeart></CiHeart></i>
+          <Link href="/wishlist"><div className="indicator">
+          <i className="text-2xl"> <CiHeart></CiHeart></i>
           <span className="badge badge-sm bg-orange-500 text-black indicator-item">4</span>
         </div></Link>
     
         <Link href='/carts'>
 
-        <div className="indicator mr-3 mt-2">
+        <div className="indicator">
           <i className="text-2xl"><IoCartOutline /></i>
           <span className="badge badge-sm bg-orange-500 text-black indicator-item">{cartItems.length}</span>
         </div>
         </Link>
 
-        <Link href="/profile/personalinfo">  <i className="text-2xl "><CiUser /></i></Link>
+        <Link href="/profile/personalinfo">  <i className="text-xl"><CiUser /></i></Link>
 
         
         </div>
@@ -110,4 +104,4 @@ const Navber = () => {
     );
 };
 
-export default Navber;
+export default Navberp;

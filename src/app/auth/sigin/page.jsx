@@ -10,8 +10,8 @@ const SignIn = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 w-[70%] m-auto my-20 bg-gradient-to-br from-orange-100 to-orange-00 p-10">
-      <div className=" flex justify-center items-center">
+    <div className="grid md:grid-cols-2 gap-5 md:w-[70%] m-auto md:my-20 bg-gradient-to-br from-orange-100 to-orange-00 p-10">
+      <div className="  flex justify-center items-center">
         <Image
           src="/login.png"
           height={200}
@@ -62,18 +62,20 @@ const SignIn = () => {
                 />
               </div>
 
-              <h1 className="text-center text-lg font-semibold ">
+              <h1 className="text-center text- font-semibold ">
                 Don't Have An Account ?{" "}
-                <span className="text-primary cursor-pointer ">Register</span>
+               <Link href='/auth/signup'> <span className="text-primary cursor-pointer ">Register</span></Link>
               </h1>
 
-              <button
+             <Link href="/">
+             <button
                 type="submit"
                 className=" bg-primary text-white   w-full border-black mt-10 py-2"
                 disabled={submitting}
               >
                 Sign In
               </button>
+             </Link>
             </form>
           )}
         />
