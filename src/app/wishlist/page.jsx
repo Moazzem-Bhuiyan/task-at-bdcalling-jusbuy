@@ -35,7 +35,7 @@ const Page = () => {
   ];
 
   return (
-    <div className="my-20">
+    <div className=" md:my-20">
       <div className="flex justify-between my-5">
         <h1>Wishlist ({wishlist.length})</h1>
         <button className="text-primary border border-primary rounded-md p-2">
@@ -43,7 +43,7 @@ const Page = () => {
         </button>
       </div>
 
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid md:grid-cols-4 gap-5 p-5 md:p-0">
         {wishlist.map((item, index) => (
           <div key={index}>
             <div className="bg-[#DFE1E3] relative rounded-sm flex items-center justify-center w-full h-[250px]">
@@ -64,8 +64,6 @@ const Page = () => {
 
             <h1 className="pt-2">{item.title}</h1>
             <h1 className="text-lg text-[#fe6201] py-1">${item.price}</h1>
-
-            
           </div>
         ))}
       </div>
@@ -74,14 +72,14 @@ const Page = () => {
         <section>
           <SectionTitle subtitle={"Just For You"} />
         </section>
-        <div className="mt-28">
+        <div className="md:mt-28 mt-5 mr-5 md:mr-0">
           <button className="text-primary border border-primary rounded-md p-2">
             See All
           </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid md:grid-cols-4 p-5 gap-5">
         {wishlist.map((item, index) => (
           <div key={index}>
             <div className="bg-[#DFE1E3] relative rounded-sm flex items-center justify-center w-full h-[250px]">
@@ -105,7 +103,7 @@ const Page = () => {
 
             <div>
               <StarRatings
-                rating={item.rating || 0} 
+                rating={item.rating || 0}
                 starRatedColor="orange"
                 numberOfStars={5}
                 name="rating"

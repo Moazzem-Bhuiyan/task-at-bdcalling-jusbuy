@@ -319,7 +319,7 @@ const Page = () => {
             ))}
           </div>
 
-          {/* Paginationn korsi  */}
+         
           <div className="flex  my-5 space-x-2">
             <button
               className={`px-4 py-2 bg-gray-300 ${currentPage === 1 && "opacity-50 cursor-not-allowed"}`}

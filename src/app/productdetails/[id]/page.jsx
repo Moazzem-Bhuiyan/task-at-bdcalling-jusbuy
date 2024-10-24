@@ -12,13 +12,10 @@ import { IoCartOutline } from "react-icons/io5";
 const Page = ({ params }) => {
   const sizes = ["XS", "M", "L", "XL", "XXL"];
 
-  // Correctly unwrap the `params` as it's now a Promise
-  const { id } = use(params);  // Make sure to unwrap the promise using `use()`
+  const { id } = use(params);
 
-  // Find the product details using the `id`
   const productDetails = product.find((item) => item.id === Number(id));
 
-  // Destructure the product details safely
   const {
     title,
     description,
@@ -29,7 +26,6 @@ const Page = ({ params }) => {
     product_description,
   } = productDetails || {};
 
-  // State hooks declared here
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(0);
 
@@ -47,7 +43,6 @@ const Page = ({ params }) => {
     }
   };
 
-  // Render message if product is not found
   if (!productDetails) {
     return <h1 className="text-center text-2xl">Product not found</h1>;
   }
