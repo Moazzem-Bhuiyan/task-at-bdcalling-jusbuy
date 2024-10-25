@@ -5,6 +5,7 @@ import { IoCartOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import Image from "next/image";
 import useCart from "../Hooks/UseCarts";
+import ActiveLink from "@/app/ActiveLink";
 const Navber = () => {
   const { cartItems } = useCart();
 
@@ -62,9 +63,9 @@ const Navber = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-10">
           {NavLink.map((item) => (
-            <Link href={item.path} key={item.path}>
+            <ActiveLink href={item.path} key={item.path}>
               {item.title}
-            </Link>
+            </ActiveLink>
           ))}
         </ul>
       </div>
@@ -94,7 +95,7 @@ const Navber = () => {
           </div>
         </div>
 
-        <Link href="/wishlist">
+        <ActiveLink href="/wishlist">
           <div className="indicator mr-3 mt-2">
             <i className="text-2xl  ">
               {" "}
@@ -104,9 +105,9 @@ const Navber = () => {
               4
             </span>
           </div>
-        </Link>
+        </ActiveLink>
 
-        <Link href="/carts">
+        <ActiveLink href="/carts">
           <div className="indicator mr-3 mt-2">
             <i className="text-2xl">
               <IoCartOutline />
@@ -115,14 +116,14 @@ const Navber = () => {
               {cartItems.length}
             </span>
           </div>
-        </Link>
+        </ActiveLink>
 
-        <Link href="/profile/personalinfo">
+        <ActiveLink href="/profile/personalinfo">
           {" "}
           <i className="text-2xl ">
             <CiUser />
           </i>
-        </Link>
+        </ActiveLink>
       </div>
     </div>
   );

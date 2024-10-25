@@ -50,3 +50,12 @@ li{
 .image-container:hover .cart-button {
   display: block; 
 }
+
+
+/* active */
+
+/* styles/globals.css */
+.active-link {
+  color: #fe6201; /* Your active link color */
+  font-weight: bold; /* Optional styling */
+}

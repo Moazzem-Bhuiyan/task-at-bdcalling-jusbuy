@@ -5,6 +5,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { GrLogout } from "react-icons/gr";
 import { TfiMenuAlt } from "react-icons/tfi";
 import Link from "next/link";
+import ActiveLink from "@/app/ActiveLink";
 
 const ProfileSideber = () => {
   return (
@@ -24,7 +25,7 @@ const ProfileSideber = () => {
       <div className="">
 
 
-      <Link href="/profile/personalinfo">
+      <ActiveLink href="/profile/personalinfo">
       <div className="flex gap-2 text-lg my-3">
           {" "}
           <i className="text-2xl">
@@ -32,9 +33,9 @@ const ProfileSideber = () => {
           </i>{" "}
           <li>Profile Details</li>
         </div>
-      </Link>
+      </ActiveLink>
 
-        <Link href="/profile/setting">
+        <ActiveLink href="/profile/setting">
           {" "}
           <div className="flex gap-2 text-lg my-3">
             {" "}
@@ -43,9 +44,9 @@ const ProfileSideber = () => {
             </i>{" "}
             <li>Setting</li>
           </div>
-        </Link>
+        </ActiveLink>
 
-      <Link href='/profile/orderhistory'>
+      <ActiveLink href='/profile/orderhistory'>
       <div className="flex gap-2 text-lg my-3">
           {" "}
           <i className="text-2xl">
@@ -55,16 +56,16 @@ const ProfileSideber = () => {
         </div>
       
       
-      </Link>
+      </ActiveLink>
 
-<Link href=''>
+<ActiveLink href=''>
         <div className="flex gap-2 text-lg my-3">
           {" "}
           <i className="text-2xl">
             <GrLogout />{" "}
           </i>{" "}
           <li>Logout</li>
-        </div></Link>
+        </div></ActiveLink>
 
 
       </div>
