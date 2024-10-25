@@ -10,7 +10,7 @@ const Page = () => {
 <div className="flex flex-col md:w-[50%] m-auto py-20 justify-center items-center my-10 bg-gradient-to-br from-orange-100 to-orange-00 p-10 space-y-5 shadow-sm">
 
 <div>
-    <Image src="/group.png" width={100} height={100} alt='img'></Image>
+    <Image src="/group.png" width={200} height={200} alt='img'></Image>
 </div>
 
 <h1 className='text-center text-primary font-bold text-3xl'>Congratulations!</h1>

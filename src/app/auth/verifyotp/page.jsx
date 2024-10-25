@@ -33,8 +33,8 @@ const Page = () => {
         <div className=" md:flex justify-center items-center">
           <Image
             src="/otp.png"
-            height={200}
-            width={200}
+            height={700}
+            width={800}
             alt="Login"
             className="w-[350px]"
           />

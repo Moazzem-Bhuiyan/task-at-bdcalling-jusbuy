@@ -22,8 +22,8 @@ const Hero = () => {
             <Image
               alt="Herosection"
               src="/herobanner.png"
-              height={350}
-              width={700}
+              height={750}
+              width={1000}
               className="w-full"
             />
           </div>
