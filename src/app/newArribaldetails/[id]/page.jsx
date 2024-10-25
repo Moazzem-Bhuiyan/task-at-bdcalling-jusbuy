@@ -8,22 +8,20 @@ import Image from "next/image";
 import { useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
-import { useParams } from "next/navigation"; // Import useParams from next/navigation
+import { useParams } from "next/navigation"; 
 
 const Page = () => {
   const sizes = ["XS", "M", "L", "XL", "XXL"];
   
-  // Use useParams to unwrap params
+
   const { id } = useParams(); 
 
-  // Initialize state for selected size and quantity
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(0);
 
-  // Fetch product details using the product ID
+
   const productDetails = newarrivall.find((item) => item.id === Number(id));
 
-  // Define handlers for size selection and quantity adjustment
   const handleSizeClick = (size) => {
     setSelectedSize(size);
   };
@@ -38,12 +36,11 @@ const Page = () => {
     }
   };
 
-  // Display an error message if the product is not found
+  
   if (!productDetails) {
     return <h1 className="text-center text-2xl">Product not found</h1>;
   }
 
-  // Destructure product details
   const {
     title,
     description,
@@ -56,6 +53,8 @@ const Page = () => {
 
   return (
     <div>
+       <h1 className=" mt-5">
+       <span className="text-sm text-gray-500">{category}</span>/<span className="text-sm font-semibold">{title}</span></h1><hr />
       <div className="grid md:grid-cols-3 gap-10 md:p-10 p-5">
         <div className="col-span-2">
           <div className="grid md:grid-cols-2">

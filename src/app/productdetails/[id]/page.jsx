@@ -49,6 +49,8 @@ const Page = ({ params }) => {
 
   return (
     <div>
+      <h1 className=" mt-5">
+      <span className="text-sm text-gray-500">{category}</span>/<span className="text-sm font-semibold">{title}</span></h1><hr />
       <div className="grid md:grid-cols-3 gap-10 md:p-10 p-2">
         <div className="col-span-2">
           <div className="grid md:grid-cols-2">
